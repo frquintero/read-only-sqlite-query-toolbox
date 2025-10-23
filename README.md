@@ -1,20 +1,68 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Read-Only SQLite Query Toolbox
 
-# Run and deploy your AI Studio app
+A web-based tool for interacting with SQLite databases in the browser. Upload SQLite database files, explore schemas, run read-only SELECT queries, and use AI assistance to generate SQL from natural language.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/drive/1gN8YuQ8jPRVCgdzEzErborUeTT4yv_kp
+- **Database Upload**: Load SQLite database files directly in the browser
+- **Schema Exploration**: View table structures and column details
+- **Query Execution**: Run read-only SELECT queries safely
+- **AI-Powered SQL Generation**: Convert natural language questions to SQL queries using Google Gemini AI
+- **Result Visualization**: Display query results in an interactive table format
+- **Project Verification**: Built-in checklist for development workflow tracking
 
-## Run Locally
+## Prerequisites
 
-**Prerequisites:**  Node.js
+- Node.js (v14 or higher)
+- Google Gemini API key (for natural language to SQL conversion)
 
+## Installation & Setup
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/frquintero/read-only-sqlite-query-toolbox.git
+   cd read-only-sqlite-query-toolbox
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+
+   Create a `.env.local` file in the root directory and add your Google Gemini API key:
+   ```
+   API_KEY=your_gemini_api_key_here
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser** and navigate to `http://localhost:5173`
+
+## Usage
+
+1. **Upload a Database**: Click the file uploader to select a `.db` or `.sqlite` file
+2. **View Schema**: The left panel will display all tables and their columns
+3. **Run Queries**:
+   - Write SQL directly in the query editor
+   - Or use natural language: "Show me all customers from New York"
+4. **View Results**: Query results appear in a table below the editor
+
+## Security
+
+- Only read-only SELECT queries are allowed
+- All processing happens locally in the browser
+- Database files are not uploaded to any server
+
+## Technologies
+
+- **React 19** - UI framework
+- **Vite** - Build tool and dev server
+- **SQL.js** - SQLite database engine in WebAssembly
+- **Google Generative AI** - Natural language to SQL conversion
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
