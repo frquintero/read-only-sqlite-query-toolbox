@@ -36,12 +36,14 @@ A web-based tool for interacting with SQLite databases in the browser. Upload SQ
    API_KEY=your_gemini_api_key_here
    ```
 
+   > **Note:** Replace `your_gemini_api_key_here` with your actual Google Gemini API key.
+
 4. **Run the development server:**
    ```bash
    npm run dev
    ```
 
-5. **Open your browser** and navigate to `http://localhost:5173`
+5. **Open your browser** and navigate to `http://localhost:3000`
 
 ## Usage
 
