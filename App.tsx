@@ -3,7 +3,6 @@ import { FileUploader } from './components/FileUploader';
 import { SchemaViewer } from './components/SchemaViewer';
 import { QueryEditor } from './components/QueryEditor';
 import { ResultsTable } from './components/ResultsTable';
-import { ProjectTracker } from './components/ProjectTracker';
 import type { Schema, QueryResult, Table } from './types';
 import { generateSqlFromNaturalLanguage } from './services/geminiService';
 import { initDb, getDbSchema, executeQuery, closeDb } from './services/dbService';
@@ -14,7 +13,6 @@ const App: React.FC = () => {
     const [queryResult, setQueryResult] = useState<QueryResult | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    const [activeTab, setActiveTab] = useState<'query' | 'plan'>('query');
 
     useEffect(() => {
         // Close the database connection when the component unmounts
@@ -113,39 +111,19 @@ const App: React.FC = () => {
                     {/* Right Column */}
                     <div className="lg:w-3/4 xl:w-4/5 flex flex-col gap-6">
                         <div className="bg-slate-800/50 rounded-lg border border-slate-700">
-                            <div className="flex border-b border-slate-700">
-                                <button
-                                    onClick={() => setActiveTab('query')}
-                                    className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'query' ? 'bg-slate-700 text-cyan-400' : 'text-slate-400 hover:bg-slate-700/50'}`}
-                                >
-                                    Query Interface
-                                </button>
-                                <button
-                                    onClick={() => setActiveTab('plan')}
-                                    className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'plan' ? 'bg-slate-700 text-cyan-400' : 'text-slate-400 hover:bg-slate-700/50'}`}
-                                >
-                                    Project Verification Workflow
-                                </button>
-                            </div>
                             <div className="p-4">
-                                {activeTab === 'query' ? (
-                                    <>
-                                        <QueryEditor
-                                            onExecute={handleQueryExecute}
-                                            onNaturalLanguageQuery={handleNaturalLanguageQuery}
-                                            isExecutionDisabled={!dbFile || isLoading}
-                                        />
-                                        <div className="mt-4 min-h-[200px]">
-                                            <ResultsTable 
-                                                queryResult={queryResult} 
-                                                isLoading={isLoading} 
-                                                error={error} 
-                                            />
-                                        </div>
-                                    </>
-                                ) : (
-                                    <ProjectTracker />
-                                )}
+                                <QueryEditor
+                                    onExecute={handleQueryExecute}
+                                    onNaturalLanguageQuery={handleNaturalLanguageQuery}
+                                    isExecutionDisabled={!dbFile || isLoading}
+                                />
+                                <div className="mt-4 min-h-[200px]">
+                                    <ResultsTable
+                                        queryResult={queryResult}
+                                        isLoading={isLoading}
+                                        error={error}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
