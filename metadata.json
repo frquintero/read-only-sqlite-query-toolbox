@@ -1,0 +1,5 @@
+{
+  "name": "SQLite Query Toolbox",
+  "description": "A web-based interface to interact with a read-only SQLite query tool. Users can upload a database file, view its schema, write natural language queries to be converted to SQL by Gemini, and execute those queries to see the results.",
+  "requestFramePermissions": []
+}
