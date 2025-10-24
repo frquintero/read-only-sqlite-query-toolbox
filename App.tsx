@@ -101,15 +101,15 @@ const App: React.FC = () => {
                     </p>
                 </header>
 
-                <div className="flex flex-col lg:flex-row gap-6">
+                <div className="flex flex-col md:flex-row gap-6">
                     {/* Left Column */}
-                    <aside className="lg:w-1/4 xl:w-1/5 flex flex-col gap-6">
+                    <aside className="md:w-1/3 lg:w-1/4 xl:w-1/5 flex flex-col gap-6">
                         <FileUploader onFileSelect={handleFileSelect} isLoading={isLoading && !schema} />
                         {schema && <SchemaViewer schema={schema} />}
                     </aside>
 
                     {/* Right Column */}
-                    <div className="lg:w-3/4 xl:w-4/5 flex flex-col gap-6">
+                    <div className="md:w-2/3 lg:w-3/4 xl:w-4/5 flex flex-col gap-6">
                         <div className="bg-slate-800/50 rounded-lg border border-slate-700">
                             <div className="p-4">
                                 <QueryEditor

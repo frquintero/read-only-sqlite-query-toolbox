@@ -33,10 +33,10 @@ A web-based tool for interacting with SQLite databases in the browser. Upload SQ
 
    Create a `.env.local` file in the root directory and add your Google Gemini API key:
    ```
-   API_KEY=your_gemini_api_key_here
+   VITE_API_KEY=your_gemini_api_key_here
    ```
 
-   > **Note:** Replace `your_gemini_api_key_here` with your actual Google Gemini API key.
+   > **Note:** Replace `your_gemini_api_key_here` with your actual Google Gemini API key. The `VITE_` prefix ensures it's exposed to the client-side code.
 
 4. **Run the development server:**
    ```bash

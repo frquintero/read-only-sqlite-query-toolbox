@@ -1,21 +1,21 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-// Assume process.env.API_KEY is configured in the environment
-const API_KEY = process.env.API_KEY;
+// Assume VITE_API_KEY is configured in .env.local
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 if (!API_KEY) {
-  console.warn("Gemini API key not found. Please set the API_KEY environment variable.");
+  console.warn("Gemini API key not found. Please set VITE_API_KEY in .env.local.");
 }
 
-const ai = new GoogleGenAI({ apiKey: API_KEY! });
+const ai = API_KEY ? new GoogleGenAI({ apiKey: API_KEY }) : null;
 
 export async function generateSqlFromNaturalLanguage(
   naturalLanguageQuery: string,
   schema: string
 ): Promise<string> {
-  if (!API_KEY) {
-    throw new Error("Gemini API key is not configured.");
+  if (!ai) {
+    throw new Error("Gemini API key is not configured. Please set VITE_API_KEY in .env.local.");
   }
   
   const model = "gemini-2.5-flash";
